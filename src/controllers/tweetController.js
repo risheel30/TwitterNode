@@ -21,16 +21,7 @@ const destroy = async function(req, res) {
         const tweet = await Tweet.findById(req.params.id)
         if(tweet.user == req.user.id) {
             tweet.remove();
-            Comment.deleteMany({tweet: req.params.id}, function(err) {
-                return res.redirect('back');
-            });
-        } else {
-            return res.redirect('back');
-        }
-    } catch(err) {
-        console.error(err);
-        return;
-    }
+            Comment.deleteMa
     
 }
 module.exports = {create, destroy};
